@@ -1,0 +1,44 @@
+Service:
+  RegionId: cn-hangzhou
+  DeployType: ros
+  DeployMetadata:
+    ServiceInstanceNameRule:
+      Prefix: prometheus-
+    TemplateConfigs:
+      - Name: 单机版
+        Url: 'ros_templates/template.yaml'
+        AllowedRegions:
+          - cn-beijing
+          - cn-hangzhou
+          - cn-shanghai
+          - ap-southeast-1
+          - cn-qingdao
+          - cn-zhangjiakou
+          - cn-huhehaote
+          - cn-wulanchabu
+          - cn-nanjing
+          - cn-shenzhen
+          - cn-heyuan
+          - cn-guangzhou
+          - cn-fuzhou
+          - cn-wuhan-lr
+          - cn-chengdu
+          - cn-hongkong
+          - ap-northeast-1
+          - ap-northeast-2
+          - ap-southeast-2
+          - ap-southeast-3
+          - ap-southeast-6
+          - ap-southeast-5
+          - ap-south-1
+          - ap-southeast-7
+          - us-east-1
+          - us-west-1
+          - eu-west-1
+          - me-east-1
+          - eu-central-1
+  ServiceType: private
+  ServiceInfo:
+    Locale: zh-CN
+    ShortDescription: Qdrant 是一个矢量相似性搜索引擎，提供生产就绪服务和方便的 API，用于存储、搜索和管理具有额外负载的点（即矢量）。您可以将有效负载视为附加信息，可以帮助您深入搜索并接收可以提供给用户的有用信息。
+    Image: 'resources/icons/qdrant.jpg'
