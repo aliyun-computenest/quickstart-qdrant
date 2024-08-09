@@ -3,7 +3,7 @@ Service:
   DeployType: ros
   DeployMetadata:
     ServiceInstanceNameRule:
-      Prefix: prometheus-
+      Prefix: qdrant-
     TemplateConfigs:
       - Name: 单机版
         Url: 'ros_templates/template.yaml'
