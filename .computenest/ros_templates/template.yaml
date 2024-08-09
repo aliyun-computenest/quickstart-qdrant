@@ -115,12 +115,17 @@ Resources:
       VpcId:
         Ref: VpcId
       SecurityGroupIngress:
-        - PortRange: 3000/3000
+        - PortRange: 6333/6333
           Priority: 1
           SourceCidrIp: 0.0.0.0/0
           IpProtocol: tcp
           NicType: internet
-        - PortRange: 9090/9090
+        - PortRange: 6334/6334
+          Priority: 1
+          SourceCidrIp: 0.0.0.0/0
+          IpProtocol: tcp
+          NicType: internet
+        - PortRange: 22/22
           Priority: 1
           SourceCidrIp: 0.0.0.0/0
           IpProtocol: tcp
@@ -220,32 +225,42 @@ Resources:
           - RegionId:
               Ref: ALIYUN::Region
 Outputs:
-  PrometheusServerAddress:
-    Description:
-      en: PrometheusServerAddress.
-      zh-cn: Prometheus访问页面
+  Web UI Address:
     Value:
       Fn::Sub:
-        - 'http://${ServerAddress}:9090'
-        - ServerAddress:
-            Fn::Select:
-            - 0
-            - Fn::GetAtt:
-              - InstanceGroup
-              - PublicIps
-  GrafanaServerAddress:
-    Description:
-      en: GrafanaServerAddress.
-      zh-cn: Grafana访问页面
-    Value:
-      Fn::Sub:
-        - 'http://${ServerAddress}:3000'
+        - 'http://${ServerAddress}:6333/dashboard'
         - ServerAddress:
             Fn::Select:
               - 0
               - Fn::GetAtt:
                   - InstanceGroup
                   - PublicIps
+  REST API Address:
+    Description:
+      en: GrafanaServerAddress.
+      zh-cn: Grafana访问页面
+    Value:
+      Fn::Sub:
+        - 'http://${ServerAddress}:6333'
+        - ServerAddress:
+            Fn::Select:
+              - 0
+              - Fn::GetAtt:
+                  - InstanceGroup
+                  - PublicIps
+  GRPC API Address:
+    Description:
+      en: PrometheusServerAddress.
+      zh-cn: GRPC API
+    Value:
+      Fn::Sub:
+        - 'http://${ServerAddress}:6334'
+        - ServerAddress:
+            Fn::Select:
+            - 0
+            - Fn::GetAtt:
+              - InstanceGroup
+              - PublicIps
 Metadata:
   ALIYUN::ROS::Interface:
     ParameterGroups:
