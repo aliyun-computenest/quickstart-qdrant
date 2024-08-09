@@ -219,7 +219,7 @@ Resources:
             systemctl start docker
             
             docker pull qdrant/qdrant
-            docker run -p 6333:6333 -p 6334:6334 -v /disk1/qdrant_storage:/qdrant/storage:z qdrant/qdrant
+            docker run -p 6333:6333 -p 6334:6334 -v /disk1/qdrant_storage:/qdrant/storage:z qdrant/qdrant &
             
             ARGUS_VERSION=3.5.7 /bin/bash -c "$(curl -sS https://cms-agent-${RegionId}.oss-${RegionId}-internal.aliyuncs.com/Argus/agent_install_ecs-1.7.sh)" >> /root/install_cms_agent.log 2>&1
           - RegionId:
