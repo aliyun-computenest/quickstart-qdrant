@@ -45,4 +45,4 @@ Service:
     Image: 'resources/icons/qdrant.jpg'
     Softwares:
     - Name: qdrant
-      Version: v1.18.3
+      Version: v1.19.0
